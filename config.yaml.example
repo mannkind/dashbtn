@@ -1,0 +1,6 @@
+'74:75:48:C3:B1:D0':
+    'add+old': [ '/usr/local/bin/mosquitto_pub', '-h', 'mosquitto', '-t', 'home/dash_btn', '-m', 'ON' ]
+    'del': [ '/usr/local/bin/mosquitto_pub', '-h', 'mosquitto', '-t', 'home/dash_btn', '-m', 'ON' ]
+
+'74:75:48:C3:B1:D1+74:75:48:C3:B1:D2':
+    'add+old': [ 'say', 'Someone is at the door. Please go see who it is!' ]
