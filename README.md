@@ -3,10 +3,10 @@
 [![Software
 License](https://img.shields.io/badge/License-MIT-orange.svg?style=flat-square)](https://github.com/mannkind/dashbtn/blob/master/LICENSE.md)
 [![Travis CI](https://img.shields.io/travis/mannkind/dashbtn/master.svg?style=flat-square)](https://travis-ci.org/mannkind/dashbtn)
-[![Coverage Status](http://codecov.io/github/mannkind/dashbtn/coverage.svg?branch=master)](http://codecov.io/github/mannkind/dashbtn?branch=master)
+[![Coverage Status](https://img.shields.io/codecov/c/github/mannkind/dashbtn/master.svg)](http://codecov.io/github/mannkind/dashbtn?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/mannkind/dashbtn)](https://goreportcard.com/report/github.com/mannkind/dashbtn)
 
-Making Amazon Dash buttons do different things using dnsmasq 
+Making Amazon Dash buttons do different things using dnsmasq
 
 # Installation
 
