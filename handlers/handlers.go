@@ -40,7 +40,14 @@ func DashHandler(w http.ResponseWriter, r *http.Request) {
 		return false
 	}
 
-	for _, macHostKey := range viper.AllKeys() {
+	for _, nestedKey := range viper.AllKeys() {
+		nestedKeyParts := strings.Split(nestedKey, ".")
+
+		if len(nestedKeyParts) < 2 {
+			continue
+		}
+
+		macHostKey := nestedKeyParts[0]
 		macHostKeyParts := strings.Split(macHostKey, "+")
 
 		if !stringSliceContains(macHostKeyParts, mac) &&
@@ -48,20 +55,23 @@ func DashHandler(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 
-		for modesKey, cmdParts := range viper.GetStringMapStringSlice(macHostKey) {
-			modesKeyParts := strings.Split(modesKey, "+")
+		modesKey := nestedKeyParts[1]
+		modesKeyParts := strings.Split(modesKey, "+")
 
-			if !stringSliceContains(modesKeyParts, mode) {
-				continue
-			}
+		if !stringSliceContains(modesKeyParts, mode) {
+			continue
+		}
 
-			runnable := exec.Command(cmdParts[0], cmdParts[1:]...)
-			runnable.Env = env
+		cmdParts := viper.GetStringSlice(nestedKey)
 
-			fmt.Fprint(w, strings.Join(cmdParts, " "))
+		runnable := exec.Command(cmdParts[0], cmdParts[1:]...)
+		runnable.Env = env
+
+		fmt.Fprint(w, strings.Join(cmdParts, " "))
+		go func() {
 			if err := runnable.Run(); err != nil {
 				log.Println(err)
 			}
-		}
+		}()
 	}
 }
