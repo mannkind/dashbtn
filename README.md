@@ -36,3 +36,6 @@ ip="$3"
 host="$4"
 wget -O - "http://HOST_RUNNING_DASHBTN:PORT/dash?mode=$mode&mac=$mac&ip=$ip&host=$host" >/dev/null 2>&1 &
 ```
+
+# Notice - Unmaintained
+Unmaintained. I didn't buy any more Dash buttons after my last one died. I also don't have a Tomato/OpenWRT router anymore (switched to UniFi). The repository will remain available for reference, but the code is unmaintained.
